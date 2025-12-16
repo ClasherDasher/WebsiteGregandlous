@@ -1,1 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <title>Catering</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <script src="./assets/config.js"></script>
+  <script src="./assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">
+        <span id="siteName">Restaurant Name</span>
+        <small id="siteTagline">Tagline</small>
+      </a>
+      <nav aria-label="Primary">
+        <a href="./index.html" data-page="index.html">Home</a>
+        <a href="./menu.html" data-page="menu.html">Menu</a>
+        <a href="./catering.html" data-page="catering.html">Catering</a>
+        <a href="./about.html" data-page="about.html">About</a>
+        <a href="./contact.html" data-page="contact.html">Contact</a>
+      </nav>
+      <div class="mobile-nav">
+        <a class="btn" href="./menu.html" data-page="menu.html">Menu</a>
+        <a class="btn primary" id="phoneLink" href="#"><span id="phoneDisplay">(000) 000-0000</span></a>
+      </div>
+    </div>
+  </header>
 
+  <main class="container" style="padding:24px 0 10px">
+    <section class="card" style="padding:18px">
+      <h1 style="margin:0 0 8px">Catering</h1>
+      <p style="margin:0 0 14px">
+        Drop your real catering details here (packages, pans, headcounts, pickup/delivery, lead time, etc.).
+        This page is written to be easy to scan on phones.
+      </p>
+
+      <div class="grid">
+        <div class="col-6">
+          <div class="card" style="padding:16px">
+            <h2>How it works</h2>
+            <ul class="list">
+              <li><span class="badge">1</span><div><b>Tell us what you need</b><div class="meta">Date, time, # of guests, and what you’re thinking.</div></div></li>
+              <li><span class="badge">2</span><div><b>We’ll confirm the order</b><div class="meta">We’ll go over options and pricing.</div></div></li>
+              <li><span class="badge">3</span><div><b>Pickup or delivery</b><div class="meta">Whatever you offer — update this line.</div></div></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="card" style="padding:16px">
+            <h2>Request catering</h2>
+            <p>Call us or send details by email.</p>
+            <div class="row" style="gap:12px">
+              <a class="btn primary" id="phoneLink2" href="#"><span id="phoneDisplay2">Call</span></a>
+              <a class="btn" href="./contact.html">Message Us</a>
+            </div>
+            <div class="hr"></div>
+            <p style="margin:0">
+              Tip: list your most popular catering items here so people don’t have to guess.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card" style="padding:16px">
+            <h2>Popular options</h2>
+            <p>Replace these placeholders with your real catering menu.</p>
+            <div class="grid">
+              <div class="col-4"><div class="card" style="padding:14px"><h3>Breakfast trays</h3><p>Eggs, bacon/sausage, potatoes, pancakes.</p></div></div>
+              <div class="col-4"><div class="card" style="padding:14px"><h3>Sandwich platters</h3><p>Assorted sandwiches + chips/sides.</p></div></div>
+              <div class="col-4"><div class="card" style="padding:14px"><h3>Hot entrees</h3><p>Comfort-food pans with sides.</p></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap">
+        <div>
+          <div style="font-weight:850; color:var(--text)" id="footerName">Restaurant</div>
+          <div style="margin-top:6px">
+            <a id="phoneLink4" href="#"><span id="phoneDisplay4"></span></a>
+            <span style="margin:0 10px; opacity:.45">•</span>
+            <a id="mapsLink3" href="#" target="_blank" rel="noopener">Directions</a>
+          </div>
+        </div>
+        <div style="opacity:.85">© <span id="year"></span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const tel = window.SITE_CONFIG?.phoneTel ? `tel:${window.SITE_CONFIG.phoneTel}` : "#";
+    ["phoneLink2","phoneLink4"].forEach(id => document.getElementById(id).href = tel);
+    ["phoneDisplay2","phoneDisplay4"].forEach(id => document.getElementById(id).textContent = window.SITE_CONFIG?.phoneDisplay || "");
+    document.getElementById("mapsLink3").href = window.SITE_CONFIG?.googleMapsUrl || "#";
+  </script>
+</body>
+</html>
