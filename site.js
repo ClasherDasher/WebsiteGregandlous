@@ -1,4 +1,3 @@
-// site.js (updated)
 function setText(id, value) {
   const el = document.getElementById(id);
   if (el) el.textContent = value ?? "";
@@ -25,17 +24,14 @@ function applyConfig() {
   const cfg = window.SITE_CONFIG;
   if (!cfg) return;
 
-  // Title + basic SEO
   document.title = `${cfg.name} • ${cfg.cityLine}`;
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) metaDesc.setAttribute("content", cfg.seo?.description || "");
 
-  // Header / footer (apply to all instances)
   document.querySelectorAll('[id^="siteName"]').forEach(el => setText(el.id, cfg.name));
   document.querySelectorAll('[id^="siteTagline"]').forEach(el => setText(el.id, cfg.tagline));
   document.querySelectorAll('[id^="footerName"]').forEach(el => setText(el.id, cfg.name));
 
-  // Common contact info (apply to all instances)
   document.querySelectorAll('[id^="phoneDisplay"]').forEach(el => setText(el.id, cfg.phoneDisplay));
   document.querySelectorAll('[id^="phoneLink"]').forEach(el => setHref(el.id, cfg.phoneTel ? `tel:${cfg.phoneTel}` : null));
 
@@ -45,16 +41,14 @@ function applyConfig() {
   });
   document.querySelectorAll('[id^="mapsLink"]').forEach(el => setHref(el.id, cfg.googleMapsUrl));
 
-  // Hours list
   const hoursEls = document.querySelectorAll('[id^="hoursList"]');
   if (hoursEls.length && Array.isArray(cfg.hours)) {
     const html = cfg.hours
-      .map(h => `<li><span style="color:var(--text); font-weight:750">${h.days}</span><span style="margin-left:auto; color:var(--muted)">${h.hours}</span></li>`)
+      .map(h => `<li><span style="font-weight:750">${h.days}</span><span style="margin-left:auto">${h.hours}</span></li>`)
       .join("");
     hoursEls.forEach(el => setHTML(el.id, html));
   }
 
-  // Highlights
   const hiEls = document.querySelectorAll('[id^="highlightsList"]');
   if (hiEls.length && Array.isArray(cfg.highlights)) {
     const html = cfg.highlights
@@ -63,11 +57,9 @@ function applyConfig() {
     hiEls.forEach(el => setHTML(el.id, html));
   }
 
-  // Social links (hide if blank)
   setHref("facebookLink", cfg.social?.facebook);
   setHref("instagramLink", cfg.social?.instagram);
 
-  // Set active nav link
   const path = (location.pathname.split("/").pop() || "index.html").toLowerCase();
   document.querySelectorAll("nav a[data-page], .mobile-nav a[data-page]").forEach(a => {
     if ((a.getAttribute("data-page") || "").toLowerCase() === path) a.classList.add("active");
