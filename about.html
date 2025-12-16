@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="" />
-  <title>About</title>
+  <title>About Us</title>
   <link rel="stylesheet" href="./assets/styles.css" />
   <script src="./assets/config.js"></script>
   <script src="./assets/site.js" defer></script>
@@ -31,41 +31,21 @@
   </header>
 
   <main class="container" style="padding:24px 0 10px">
-    <section class="card" style="padding:18px">
-      <h1 style="margin:0 0 8px">About</h1>
-      <p>
-        Put your story here — how long you’ve been in Owosso, what you’re known for, what you care about, etc.
-        Keep it simple and friendly.
-      </p>
+    <div class="card" style="padding:18px">
+      <h1>About Greg & Lou’s</h1>
+      <p>Family-owned restaurant in Owosso, MI, serving homestyle meals since [year]. Add your story here—edit this page with details about your history, team, or community involvement.</p>
+    </div>
 
-      <div class="grid">
-        <div class="col-6">
-          <div class="card" style="padding:16px">
-            <h2>Our vibe</h2>
-            <p>
-              Family-friendly, comfortable, and welcoming. Swap this text with your real description.
-            </p>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="card" style="padding:16px">
-            <h2>What we’re known for</h2>
-            <ul class="list" id="highlightsList"></ul>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="card" style="padding:16px">
-            <h2>Location</h2>
-            <p>
-              <span id="addr1">Address line</span><br/>
-              <span id="addr2">City, State ZIP</span>
-            </p>
-            <div class="row" style="gap:12px">
-              <a class="btn" id="mapsLink" href="#" target="_blank" rel="noopener">Get Directions</a>
-              <a class="btn primary" id="phoneLink2" href="#"><span id="phoneDisplay2">Call</span></a>
-            </div>
-          </div>
-        </div>
+    <section class="section grid">
+      <div class="col-6 card feature">
+        <h2>Our Highlights</h2>
+        <ul class="list" id="highlightsList"></ul>
+      </div>
+      <div class="col-6 card feature">
+        <h2>Visit Us</h2>
+        <p id="addr1"></p>
+        <p id="addr2"></p>
+        <ul class="list" id="hoursList"></ul>
       </div>
     </section>
   </main>
@@ -88,10 +68,6 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    const tel = window.SITE_CONFIG?.phoneTel ? `tel:${window.SITE_CONFIG.phoneTel}` : "#";
-    ["phoneLink2","phoneLink4"].forEach(id => document.getElementById(id).href = tel);
-    ["phoneDisplay2","phoneDisplay4"].forEach(id => document.getElementById(id).textContent = window.SITE_CONFIG?.phoneDisplay || "");
-    document.getElementById("mapsLink3").href = window.SITE_CONFIG?.googleMapsUrl || "#";
   </script>
 </body>
 </html>
