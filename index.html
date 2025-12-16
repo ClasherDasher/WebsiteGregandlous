@@ -13,8 +13,8 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="./index.html">
-        <span id="siteName">Restaurant Name</span>
-        <small id="siteTagline">Tagline</small>
+        <span id="siteName">Greg & Lou’s</span>
+        <small id="siteTagline">Family Restaurant</small>
       </a>
       <nav aria-label="Primary">
         <a href="./index.html" data-page="index.html">Home</a>
@@ -24,65 +24,60 @@
         <a href="./contact.html" data-page="contact.html">Contact</a>
       </nav>
       <div class="mobile-nav">
-        <a class="btn" href="./menu.html" data-page="menu.html">Menu</a>
-        <a class="btn primary" id="phoneLink" href="#"><span id="phoneDisplay">(000) 000-0000</span></a>
+        <a class="btn" href="./menu.html">Menu</a>
+        <a class="btn" id="phoneLink"><span id="phoneDisplay">(989) 725-9601</span></a>
       </div>
     </div>
   </header>
 
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1>Homestyle Comfort Food in Owosso</h1>
+      <p>Breakfast all day • Daily specials • Family-owned since 1983</p>
+      <div>
+        <a class="btn" id="phoneLink2" href="#">Call Now</a>
+        <a class="btn secondary" href="./menu.html">View Menu</a>
+      </div>
+    </div>
+  </section>
+
   <main class="container">
-    <section class="hero card">
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <div class="kicker"><b>Welcome to</b> Greg & Lou’s</div>
-          <h1>Homestyle Comfort Food in Owosso</h1>
-          <p>Join us for breakfast all day, daily specials, and friendly service. Family-owned since [year].</p>
-          <div style="display:flex; gap:10px; margin-top:16px">
-            <a class="btn primary" href="./menu.html">View Menu</a>
-            <a class="btn" id="phoneLink2" href="#"><span id="phoneDisplay2"></span> Call Now</a>
-          </div>
-        </div>
-        <div class="hero-media">
-          <!-- Replace with real image: <img src="path/to/hero-image.jpg" alt="Restaurant interior"> -->
-          <div class="placeholder">Add your hero photo here (e.g., restaurant exterior or food). Edit in index.html.</div>
-        </div>
+    <section class="section grid">
+      <div class="col-4 card">
+        <img src="./assets/images/interior1.jpg" alt="Cozy dining area">
+      </div>
+      <div class="col-8 card">
+        <h2>Welcome to Greg & Lou’s</h2>
+        <p>Family-owned diner serving delicious homestyle meals in Owosso, Michigan. Join us for hearty breakfasts, classic lunches, dinners, and homemade desserts.</p>
+        <ul class="list" id="highlightsList"></ul>
       </div>
     </section>
 
     <section class="section grid">
-      <div class="col-4 card feature">
-        <h3>Our Highlights</h3>
-        <ul class="list" id="highlightsList"></ul>
-      </div>
-      <div class="col-4 card feature">
-        <h3>Hours</h3>
+      <div class="col-6 card">
+        <h2>Hours</h2>
         <ul class="list" id="hoursList"></ul>
       </div>
-      <div class="col-4 card feature">
-        <h3>Visit Us</h3>
+      <div class="col-6 card">
+        <h2>Location</h2>
         <p id="addr1"></p>
         <p id="addr2"></p>
-        <a class="btn" id="mapsLink" href="#" target="_blank" rel="noopener">Get Directions</a>
+        <a class="btn secondary" id="mapsLink" href="#" target="_blank">Get Directions</a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap">
+      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px">
         <div>
-          <div style="font-weight:850; color:var(--text)" id="footerName">Restaurant</div>
-          <div style="margin-top:6px">
-            <a id="phoneLink3" href="#"><span id="phoneDisplay3"></span></a>
-            <span style="margin:0 10px; opacity:.45">•</span>
-            <a id="mapsLink2" href="#" target="_blank" rel="noopener">Directions</a>
-            <span style="margin:0 10px; opacity:.45">•</span>
-            <a id="facebookLink" href="#" target="_blank" rel="noopener">Facebook</a>
-            <span style="margin:0 10px; opacity:.45">•</span>
-            <a id="instagramLink" href="#" target="_blank" rel="noopener">Instagram</a>
+          <div style="font-size:1.4rem; font-weight:900; color:white" id="footerName">Greg & Lou’s</div>
+          <div style="margin-top:12px">
+            <a id="phoneLink3" href="#"><span id="phoneDisplay3"></span></a> • 
+            <a id="mapsLink2" href="#" target="_blank">Directions</a>
           </div>
         </div>
-        <div style="opacity:.85">© <span id="year"></span></div>
+        <div>© <span id="year"></span> All rights reserved.</div>
       </div>
     </div>
   </footer>
