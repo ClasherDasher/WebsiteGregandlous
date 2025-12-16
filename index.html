@@ -1,1 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <title>Restaurant</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <script src="./assets/config.js"></script>
+  <script src="./assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">
+        <span id="siteName">Restaurant Name</span>
+        <small id="siteTagline">Tagline</small>
+      </a>
 
+      <nav aria-label="Primary">
+        <a href="./index.html" data-page="index.html">Home</a>
+        <a href="./menu.html" data-page="menu.html">Menu</a>
+        <a href="./catering.html" data-page="catering.html">Catering</a>
+        <a href="./about.html" data-page="about.html">About</a>
+        <a href="./contact.html" data-page="contact.html">Contact</a>
+      </nav>
+
+      <div class="mobile-nav" aria-label="Mobile quick links">
+        <a class="btn" href="./menu.html" data-page="menu.html">Menu</a>
+        <a class="btn primary" id="phoneLink" href="#"><span id="phoneDisplay">(000) 000-0000</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="kicker"><b>Local • Friendly</b> <span>•</span> <span id="cityLine">Owosso, Michigan</span></div>
+          <h1 id="headline">Great food, no fuss.</h1>
+          <p>
+            Welcome to <span id="nameInline">our restaurant</span> — a cozy spot for breakfast, lunch, dinner, and daily specials.
+            Update this text to match your vibe.
+          </p>
+          <div class="row" style="gap:12px; margin-top:14px">
+            <a class="btn primary" href="./menu.html">See Menu</a>
+            <a class="btn" id="mapsLink" href="#" target="_blank" rel="noopener">Get Directions</a>
+            <a class="btn" id="phoneLink2" href="#"><span id="phoneDisplay2">Call</span></a>
+          </div>
+
+          <div class="hr"></div>
+
+          <h3>What people come back for</h3>
+          <ul class="list" id="highlightsList"></ul>
+        </div>
+
+        <div class="hero-media" aria-label="Photo area">
+          <div class="placeholder">
+            <div style="font-weight:800; color:var(--text); margin-bottom:6px">Add a hero photo</div>
+            Replace this section with a real photo later (optional).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid">
+        <div class="col-6">
+          <div class="card feature">
+            <h2>Hours</h2>
+            <p>Keep this accurate — it’s one of the most important things on your site.</p>
+            <ul class="list" id="hoursList"></ul>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="card feature">
+            <h2>Visit us</h2>
+            <p>
+              <span id="addr1">Address line</span><br/>
+              <span id="addr2">City, State ZIP</span>
+            </p>
+            <div class="row" style="gap:12px">
+              <a class="btn" id="mapsLink2" href="#" target="_blank" rel="noopener">Open in Maps</a>
+              <a class="btn primary" id="phoneLink3" href="#"><span id="phoneDisplay3">Call</span></a>
+            </div>
+            <div class="hr"></div>
+            <p style="margin-bottom:8px; color:var(--muted)">Social</p>
+            <div class="row" style="gap:12px">
+              <a class="btn" id="facebookLink" href="#" target="_blank" rel="noopener">Facebook</a>
+              <a class="btn" id="instagramLink" href="#" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card feature">
+            <h2>Quick actions</h2>
+            <p>These buttons help customers do what they actually came to do.</p>
+            <div class="row" style="gap:12px">
+              <a class="btn primary" href="./menu.html">View Menu</a>
+              <a class="btn" href="./catering.html">Catering Info</a>
+              <a class="btn" href="./contact.html">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap">
+        <div>
+          <div style="font-weight:850; color:var(--text)" id="footerName">Restaurant</div>
+          <div style="margin-top:6px">
+            <a id="phoneLink4" href="#"><span id="phoneDisplay4"></span></a>
+            <span style="margin:0 10px; opacity:.45">•</span>
+            <a id="mapsLink3" href="#" target="_blank" rel="noopener">Directions</a>
+          </div>
+        </div>
+        <div style="opacity:.85">© <span id="year"></span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // small inline helpers for repeated IDs
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("cityLine").textContent = window.SITE_CONFIG?.cityLine || "";
+    document.getElementById("headline").textContent = window.SITE_CONFIG?.tagline || "Great food, no fuss.";
+    document.getElementById("nameInline").textContent = window.SITE_CONFIG?.name || "our restaurant";
+
+    // duplicate phone/map buttons
+    const phoneTel = window.SITE_CONFIG?.phoneTel ? `tel:${window.SITE_CONFIG.phoneTel}` : "#";
+    ["phoneLink2","phoneLink3","phoneLink4"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.href = phoneTel;
+    });
+    ["phoneDisplay2","phoneDisplay3","phoneDisplay4"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = window.SITE_CONFIG?.phoneDisplay || "";
+    });
+    ["mapsLink2","mapsLink3"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.href = window.SITE_CONFIG?.googleMapsUrl || "#";
+    });
+  </script>
+</body>
+</html>
