@@ -1,3 +1,4 @@
+// site.js (updated)
 function setText(id, value) {
   const el = document.getElementById(id);
   if (el) el.textContent = value ?? "";
@@ -10,8 +11,14 @@ function setHTML(id, value) {
 
 function setHref(id, href) {
   const el = document.getElementById(id);
-  if (el && href) el.href = href;
-  if (el && !href) el.style.display = "none";
+  if (el) {
+    if (href) {
+      el.href = href;
+      el.style.display = "";
+    } else {
+      el.style.display = "none";
+    }
+  }
 }
 
 function applyConfig() {
@@ -23,33 +30,37 @@ function applyConfig() {
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) metaDesc.setAttribute("content", cfg.seo?.description || "");
 
-  // Header / footer
-  setText("siteName", cfg.name);
-  setText("siteTagline", cfg.tagline);
-  setText("footerName", cfg.name);
+  // Header / footer (apply to all instances)
+  document.querySelectorAll('[id^="siteName"]').forEach(el => setText(el.id, cfg.name));
+  document.querySelectorAll('[id^="siteTagline"]').forEach(el => setText(el.id, cfg.tagline));
+  document.querySelectorAll('[id^="footerName"]').forEach(el => setText(el.id, cfg.name));
 
-  // Common contact info
-  setText("phoneDisplay", cfg.phoneDisplay);
-  setHref("phoneLink", `tel:${cfg.phoneTel}`);
+  // Common contact info (apply to all instances)
+  document.querySelectorAll('[id^="phoneDisplay"]').forEach(el => setText(el.id, cfg.phoneDisplay));
+  document.querySelectorAll('[id^="phoneLink"]').forEach(el => setHref(el.id, cfg.phoneTel ? `tel:${cfg.phoneTel}` : null));
 
-  setText("addr1", cfg.addressLine1);
-  setText("addr2", cfg.addressLine2);
-  setHref("mapsLink", cfg.googleMapsUrl);
+  document.querySelectorAll('[id^="addr"]').forEach(el => {
+    if (el.id.endsWith("1")) setText(el.id, cfg.addressLine1);
+    if (el.id.endsWith("2")) setText(el.id, cfg.addressLine2);
+  });
+  document.querySelectorAll('[id^="mapsLink"]').forEach(el => setHref(el.id, cfg.googleMapsUrl));
 
   // Hours list
-  const hoursEl = document.getElementById("hoursList");
-  if (hoursEl && Array.isArray(cfg.hours)) {
-    hoursEl.innerHTML = cfg.hours
+  const hoursEls = document.querySelectorAll('[id^="hoursList"]');
+  if (hoursEls.length && Array.isArray(cfg.hours)) {
+    const html = cfg.hours
       .map(h => `<li><span style="color:var(--text); font-weight:750">${h.days}</span><span style="margin-left:auto; color:var(--muted)">${h.hours}</span></li>`)
       .join("");
+    hoursEls.forEach(el => setHTML(el.id, html));
   }
 
   // Highlights
-  const hiEl = document.getElementById("highlightsList");
-  if (hiEl && Array.isArray(cfg.highlights)) {
-    hiEl.innerHTML = cfg.highlights
+  const hiEls = document.querySelectorAll('[id^="highlightsList"]');
+  if (hiEls.length && Array.isArray(cfg.highlights)) {
+    const html = cfg.highlights
       .map((t, i) => `<li><span class="badge">${i+1}</span><div>${t}</div></li>`)
       .join("");
+    hiEls.forEach(el => setHTML(el.id, html));
   }
 
   // Social links (hide if blank)
