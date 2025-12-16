@@ -1,1 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <title>Contact</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <script src="./assets/config.js"></script>
+  <script src="./assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">
+        <span id="siteName">Restaurant Name</span>
+        <small id="siteTagline">Tagline</small>
+      </a>
+      <nav aria-label="Primary">
+        <a href="./index.html" data-page="index.html">Home</a>
+        <a href="./menu.html" data-page="menu.html">Menu</a>
+        <a href="./catering.html" data-page="catering.html">Catering</a>
+        <a href="./about.html" data-page="about.html">About</a>
+        <a href="./contact.html" data-page="contact.html">Contact</a>
+      </nav>
+      <div class="mobile-nav">
+        <a class="btn" href="./index.html" data-page="index.html">Home</a>
+        <a class="btn primary" id="phoneLink" href="#"><span id="phoneDisplay">(000) 000-0000</span></a>
+      </div>
+    </div>
+  </header>
 
+  <main class="container" style="padding:24px 0 10px">
+    <section class="card" style="padding:18px">
+      <h1 style="margin:0 0 8px">Contact</h1>
+      <p style="margin:0 0 16px">
+        Call during business hours, or send a message using the button below.
+      </p>
+
+      <div class="grid">
+        <div class="col-6">
+          <div class="card" style="padding:16px">
+            <h2>Phone</h2>
+            <p style="margin-bottom:10px">
+              <a class="btn primary" id="phoneLink2" href="#"><span id="phoneDisplay2"></span></a>
+            </p>
+            <p class="meta" style="color:var(--muted)">Tip: customers love a fast “call-ahead” option.</p>
+          </div>
+
+          <div class="card" style="padding:16px; margin-top:16px">
+            <h2>Address</h2>
+            <p>
+              <span id="addr1">Address line</span><br/>
+              <span id="addr2">City, State ZIP</span>
+            </p>
+            <a class="btn" id="mapsLink" href="#" target="_blank" rel="noopener">Get Directions</a>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="card" style="padding:16px">
+            <h2>Send a message</h2>
+            <p>
+              GitHub Pages can’t process forms by itself. This uses your visitor’s email app (mailto).
+              If you want a real form later, we can add a free form service.
+            </p>
+
+            <form class="form" id="contactForm">
+              <input class="input" name="name" placeholder="Your name" required />
+              <input class="input" name="phone" placeholder="Phone (optional)" />
+              <input class="input" name="subject" placeholder="Subject" required />
+              <textarea name="message" placeholder="Your message" required></textarea>
+              <button class="btn primary" type="submit">Open Email</button>
+            </form>
+          </div>
+
+          <div class="card" style="padding:16px; margin-top:16px">
+            <h2>Hours</h2>
+            <ul class="list" id="hoursList"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap">
+        <div>
+          <div style="font-weight:850; color:var(--text)" id="footerName">Restaurant</div>
+          <div style="margin-top:6px">
+            <a id="phoneLink4" href="#"><span id="phoneDisplay4"></span></a>
+            <span style="margin:0 10px; opacity:.45">•</span>
+            <a id="mapsLink3" href="#" target="_blank" rel="noopener">Directions</a>
+          </div>
+        </div>
+        <div style="opacity:.85">© <span id="year"></span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const tel = window.SITE_CONFIG?.phoneTel ? `tel:${window.SITE_CONFIG.phoneTel}` : "#";
+    document.getElementById("phoneLink2").href = tel;
+    document.getElementById("phoneLink4").href = tel;
+    document.getElementById("phoneDisplay2").textContent = window.SITE_CONFIG?.phoneDisplay || "";
+    document.getElementById("phoneDisplay4").textContent = window.SITE_CONFIG?.phoneDisplay || "";
+
+    document.getElementById("mapsLink").href = window.SITE_CONFIG?.googleMapsUrl || "#";
+    document.getElementById("mapsLink3").href = window.SITE_CONFIG?.googleMapsUrl || "#";
+
+    // mailto form
+    document.getElementById("contactForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const name = (fd.get("name") || "").toString().trim();
+      const phone = (fd.get("phone") || "").toString().trim();
+      const subject = (fd.get("subject") || "").toString().trim();
+      const message = (fd.get("message") || "").toString().trim();
+
+      const to = ""; // <-- put your contact email here, like "orders@example.com"
+      if (!to) {
+        alert("Set your contact email in contact.html (search for: const to = \"\").");
+        return;
+      }
+
+      const body =
+`Name: ${name}
+Phone: ${phone}
+
+Message:
+${message}`;
+
+      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>
