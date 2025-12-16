@@ -1,1 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <title>Menu</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <script src="./assets/config.js"></script>
+  <script src="./assets/site.js" defer></script>
+  <script src="./assets/menu.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">
+        <span id="siteName">Restaurant Name</span>
+        <small id="siteTagline">Tagline</small>
+      </a>
+      <nav aria-label="Primary">
+        <a href="./index.html" data-page="index.html">Home</a>
+        <a href="./menu.html" data-page="menu.html">Menu</a>
+        <a href="./catering.html" data-page="catering.html">Catering</a>
+        <a href="./about.html" data-page="about.html">About</a>
+        <a href="./contact.html" data-page="contact.html">Contact</a>
+      </nav>
+      <div class="mobile-nav">
+        <a class="btn" href="./index.html" data-page="index.html">Home</a>
+        <a class="btn primary" id="phoneLink" href="#"><span id="phoneDisplay">(000) 000-0000</span></a>
+      </div>
+    </div>
+  </header>
 
+  <main class="container" style="padding:24px 0 10px">
+    <div class="card" style="padding:18px">
+      <h1 style="margin:0 0 6px">Menu</h1>
+      <p style="margin:0">
+        Update items and prices in <code>menu.json</code>. You can also add a printable PDF later.
+      </p>
+    </div>
+
+    <div class="section" style="display:grid; gap:16px" id="menuContainer"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap">
+        <div>
+          <div style="font-weight:850; color:var(--text)" id="footerName">Restaurant</div>
+          <div style="margin-top:6px">
+            <a id="phoneLink4" href="#"><span id="phoneDisplay4"></span></a>
+            <span style="margin:0 10px; opacity:.45">•</span>
+            <a id="mapsLink3" href="#" target="_blank" rel="noopener">Directions</a>
+          </div>
+        </div>
+        <div style="opacity:.85">© <span id="year"></span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("phoneDisplay4").textContent = window.SITE_CONFIG?.phoneDisplay || "";
+    document.getElementById("phoneLink4").href = window.SITE_CONFIG?.phoneTel ? `tel:${window.SITE_CONFIG.phoneTel}` : "#";
+    document.getElementById("mapsLink3").href = window.SITE_CONFIG?.googleMapsUrl || "#";
+  </script>
+</body>
+</html>
