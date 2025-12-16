@@ -1,1 +1,37 @@
-
+{
+  "categories": [
+    {
+      "name": "Breakfast",
+      "note": "Served all day (update this note if needed).",
+      "items": [
+        { "name": "Two Eggs Any Style", "description": "With toast and choice of side.", "price": "$0.00" },
+        { "name": "Pancake Stack", "description": "Add fruit or chocolate chips.", "price": "$0.00" },
+        { "name": "Biscuits & Gravy", "description": "Homestyle classic.", "price": "$0.00" }
+      ]
+    },
+    {
+      "name": "Lunch & Dinner",
+      "note": "Daily specials available — call for today’s options.",
+      "items": [
+        { "name": "Classic Burger", "description": "Add cheese, bacon, or mushrooms.", "price": "$0.00" },
+        { "name": "Chicken Tenders Basket", "description": "With fries and dipping sauce.", "price": "$0.00" },
+        { "name": "Homestyle Meatloaf", "description": "Served with two sides.", "price": "$0.00" }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        { "name": "Fries", "price": "$0.00" },
+        { "name": "Coleslaw", "price": "$0.00" },
+        { "name": "Soup of the Day", "price": "$0.00" }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Homemade Pie (Ask Today’s)", "price": "$0.00" },
+        { "name": "Ice Cream", "price": "$0.00" }
+      ]
+    }
+  ]
+}
