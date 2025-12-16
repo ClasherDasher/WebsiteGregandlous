@@ -24,59 +24,23 @@
         <a href="./contact.html" data-page="contact.html">Contact</a>
       </nav>
       <div class="mobile-nav">
-        <a class="btn" href="./menu.html" data-page="menu.html">Menu</a>
+        <a class="btn" href="./index.html" data-page="index.html">Home</a>
         <a class="btn primary" id="phoneLink" href="#"><span id="phoneDisplay">(000) 000-0000</span></a>
       </div>
     </div>
   </header>
 
   <main class="container" style="padding:24px 0 10px">
-    <section class="card" style="padding:18px">
-      <h1 style="margin:0 0 8px">Catering</h1>
-      <p style="margin:0 0 14px">
-        Drop your real catering details here (packages, pans, headcounts, pickup/delivery, lead time, etc.).
-        This page is written to be easy to scan on phones.
-      </p>
+    <div class="card" style="padding:18px">
+      <h1>Catering Services</h1>
+      <p>We offer catering for events big and small. Contact us for custom menus, pricing, and availability.</p>
+    </div>
 
-      <div class="grid">
-        <div class="col-6">
-          <div class="card" style="padding:16px">
-            <h2>How it works</h2>
-            <ul class="list">
-              <li><span class="badge">1</span><div><b>Tell us what you need</b><div class="meta">Date, time, # of guests, and what you’re thinking.</div></div></li>
-              <li><span class="badge">2</span><div><b>We’ll confirm the order</b><div class="meta">We’ll go over options and pricing.</div></div></li>
-              <li><span class="badge">3</span><div><b>Pickup or delivery</b><div class="meta">Whatever you offer — update this line.</div></div></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-6">
-          <div class="card" style="padding:16px">
-            <h2>Request catering</h2>
-            <p>Call us or send details by email.</p>
-            <div class="row" style="gap:12px">
-              <a class="btn primary" id="phoneLink2" href="#"><span id="phoneDisplay2">Call</span></a>
-              <a class="btn" href="./contact.html">Message Us</a>
-            </div>
-            <div class="hr"></div>
-            <p style="margin:0">
-              Tip: list your most popular catering items here so people don’t have to guess.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-12">
-          <div class="card" style="padding:16px">
-            <h2>Popular options</h2>
-            <p>Replace these placeholders with your real catering menu.</p>
-            <div class="grid">
-              <div class="col-4"><div class="card" style="padding:14px"><h3>Breakfast trays</h3><p>Eggs, bacon/sausage, potatoes, pancakes.</p></div></div>
-              <div class="col-4"><div class="card" style="padding:14px"><h3>Sandwich platters</h3><p>Assorted sandwiches + chips/sides.</p></div></div>
-              <div class="col-4"><div class="card" style="padding:14px"><h3>Hot entrees</h3><p>Comfort-food pans with sides.</p></div></div>
-            </div>
-          </div>
-        </div>
-
+    <section class="section grid">
+      <div class="col-12 card feature">
+        <h2>Sample Catering Options</h2>
+        <p>Add details here, e.g., trays of sandwiches, full meals, desserts. Or load from a separate JSON if needed.</p>
+        <a class="btn primary" href="./contact.html">Inquire Now</a>
       </div>
     </section>
   </main>
@@ -99,10 +63,6 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    const tel = window.SITE_CONFIG?.phoneTel ? `tel:${window.SITE_CONFIG.phoneTel}` : "#";
-    ["phoneLink2","phoneLink4"].forEach(id => document.getElementById(id).href = tel);
-    ["phoneDisplay2","phoneDisplay4"].forEach(id => document.getElementById(id).textContent = window.SITE_CONFIG?.phoneDisplay || "");
-    document.getElementById("mapsLink3").href = window.SITE_CONFIG?.googleMapsUrl || "#";
   </script>
 </body>
 </html>
